@@ -1,5 +1,13 @@
 # Actualizar el kernel de Proxmox VE con el script
 
+## Motivación
+
+El script nació al revisar el [aviso de seguridad PSA-2026-00080-1 de Proxmox](https://forum.proxmox.com/threads/proxmox-virtual-environment-security-advisories.149331/page-5#-subject-psa-2026-00080-1-kernel-tcp-use-after-free-cve-2026-98432), publicado el 31 de octubre de 2026. El aviso documenta la [CVE-2026-98432](https://nvd.nist.gov/vuln/detail/CVE-2026-98432), un fallo de tipo *use-after-free* en la gestión de conexiones TCP sobre IPv4 del kernel Linux. Para la rama probada, Proxmox indica que la corrección está incluida desde `7.0.14-25-pve`.
+
+El parche ya estaba disponible en el repositorio, pero no me había dado cuenta de que el nodo seguía arrancado con `7.0.14-8-pve`. Lo confirmé con `uname -r` y actualicé a `7.0.14-30-pve`, el candidato que ofrecía APT para esa rama. Después del reinicio, volví a ejecutar `uname -r` para confirmar que el kernel corregido estaba activo.
+
+El script reúne los pasos que hice a mano. Detecta la rama activa, simula la instalación, pide confirmación y comprueba que el kernel anterior siga disponible en GRUB para recuperar el arranque si hace falta. Para otros avisos, compara el candidato de APT con la versión corregida que indique Proxmox.
+
 ## Instalación
 
 El script está diseñado para Proxmox VE con BIOS heredado y GRUB. Ejecútalo como root desde una terminal interactiva y asegúrate de poder acceder a la consola del host.
