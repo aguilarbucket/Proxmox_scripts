@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Proxmox VE: actualización de la rama activa del kernel en hosts BIOS con GRUB.
 set -euo pipefail
 export LC_ALL=C
