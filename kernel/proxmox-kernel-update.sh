@@ -27,8 +27,6 @@ check_boot() {
 check_boot "$active"
 printf 'Kernel activo: %s\n' "$active"
 df -h / /boot
-command -v qm >/dev/null && qm list
-command -v pct >/dev/null && pct list
 
 apt-get -o APT::Update::Error-Mode=any update
 candidate=$(apt-cache policy "$meta" | awk '$1 == "Candidate:" { print $2 }')
