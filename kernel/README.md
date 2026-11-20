@@ -25,3 +25,5 @@ Después del reinicio, `uname -r` devolvió `7.0.14-30-pve`. En la sesión del p
 ## Alcance
 
 El script actualiza dentro de la rama activa consultando los repositorios configurados. La versión candidata de APT no acredita por sí sola la mitigación de una CVE. La prueba descrita corresponde a un nodo con BIOS heredado y GRUB.
+
+Si compartes una captura o un log de la ejecución, oculta el nombre del nodo, las direcciones IP y las URL de repositorios privados que puedan aparecer en la terminal.
